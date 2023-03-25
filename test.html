@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <p id="tirukkural"></p>
+<body>
+    <script>
+        fetch('https://api-thirukkural.vercel.app/api?num=45')
+        .then(res => {
+            if(res.ok)
+                console.log('success')
+            else
+                console.log('Failed')
+            return res.json()
+        })
+        .then(msg => {
+            document.getElementById('tirukkural').innerHTML = `
+                <p>${msg.line1}</p>
+                <p>${msg.line2}</p>
+                <p>${msg.tam_exp}</p>
+            `
+        })
+        .catch(err => console.log(err))
+    </script>
+    
+</body>
+</html>
